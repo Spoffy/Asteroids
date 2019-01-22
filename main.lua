@@ -76,7 +76,7 @@ end
 
 local drawPhysicsObjects = System(
   { 'drawable', 'physics' },
-  function (d, p, dt)
+  function (d, p)
     d.draw(p.body:getX(), p.body:getY(), p.body:getAngle())
   end
 )
@@ -87,7 +87,7 @@ function love.draw()
   love.graphics.setCanvas(canvas)
   love.graphics.clear()
   for name,entity in pairs(entities) do
-    drawPhysicsObjects(entity, 0)
+    drawPhysicsObjects(entity)
   end
   love.graphics.print(tostring(love.timer.getFPS()), 20, 20)
   love.graphics.print(tostring(delta), 40, 40)
