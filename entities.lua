@@ -52,6 +52,11 @@ function M.ship(x, y, image)
         self.body:setAngularVelocity(self.angularVelocity)
     end
 
+    phys.stopRotation = function(self)
+        self.body:setAngularVelocity(0)
+    end
+
+
     return ship
 end
 

@@ -68,7 +68,7 @@ function love.update(dt)
         phys:rotateClockwise()
     end
     if love.keyboard.isDown('d') and love.keyboard.isDown('a') or not love.keyboard.isDown('a') and not love.keyboard.isDown('d') then
-      phys.body:setAngularVelocity(0)
+        phys:stopRotation()
     end
   end
 
