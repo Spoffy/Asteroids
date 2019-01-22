@@ -5,6 +5,7 @@ local M = {}
 
 function M.ship(x, y, image)
     local ship = {}
+    ship.type = "ship"
 
     --Drawable
     ship.drawable = components.drawable(image)
@@ -62,6 +63,7 @@ end
 
 function M.obstacle(x, y, image)
     local obs = {}
+    obs.type = "obstacle"
 
     --Drawable
     obs.drawable = components.drawable(image)
