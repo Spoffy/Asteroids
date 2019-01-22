@@ -8,19 +8,32 @@ assets = {}
 world = nil
 entities = {}
 
+function beginContact(a, b, coll)
+  if a.type == "ship" then
+    b.physics.body:destroy()
+    entities.obstacle = nil
+  end
+
+  if b.type == "ship" then
+    b.physics.body:destroy()
+    entities.obstacle = nil
+  end
+end
+
 
 function love.load()
-  assets.ship = love.graphics.newImage("assets/images/ship_large_body.png");
-  assets.obstacle = love.graphics.newImage("assets/images/ship_small_body.png");
+  assets.ship = love.graphics.newImage("assets/images/ships/ship_large_body.png");
+  assets.obstacle = love.graphics.newImage("assets/images/asteroids/asteroid.png");
 
   love.physics.setMeter(64)
   world = love.physics.newWorld(0,0,true)
+  world:setCallbacks(beginContact)
 
   entities.ship = entityTemplates.ship(50, 50, assets.ship)
   entities.obstacle = entityTemplates.obstacle(50, 50, assets.obstacle)
 
   love.graphics.setBackgroundColor(0.2, 0.2, 0.2)
-  love.window.setMode(650, 650, {vsync = false, msaa = 2})
+  love.window.setMode(650, 650, {vsync = false, msaa = 4})
 end
 
 local wrapMap = System(
