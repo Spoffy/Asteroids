@@ -1,3 +1,4 @@
+local tick = require "tick"
 local System = require "knife.system"
 local physics_helpers = require "physics_helpers"
 local entityTemplates = require "entities"
